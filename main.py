@@ -150,7 +150,7 @@ def submit(driver):
     time.sleep(TIMESLP)
 
 
-def fill_out(driver, campus, reason, destination, track):
+def fill_out(driver, campus, reason, track):
     print('开始填报出校备案')
 
     print('选择出校/入校    ', end='')
@@ -165,9 +165,7 @@ def fill_out(driver, campus, reason, destination, track):
     write_reason(driver, reason)
     print('Done')
 
-    print('选择出校目的地    ', end='')
-    select_destination(driver, destination)
-    print('Done')
+
 
     print('填写出校行动轨迹    ', end='')
     write_track(driver, track)
