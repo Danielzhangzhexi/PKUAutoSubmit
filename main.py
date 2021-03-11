@@ -99,10 +99,10 @@ def select_campus(driver, campus):
     driver.find_element_by_xpath(f'//li/span[text()="{campus}"]').click()
 
 
-def select_destination(driver, destination):
-    driver.find_elements_by_class_name('el-select')[2].click()
-    time.sleep(TIMESLP)
-    driver.find_element_by_xpath(f'//li/span[text()="{destination}"]').click()
+#def select_destination(driver, destination):
+#    driver.find_elements_by_class_name('el-select')[2].click()
+#    time.sleep(TIMESLP)
+#    driver.find_element_by_xpath(f'//li/span[text()="{destination}"]').click()
 
 
 def select_district(driver, district):
