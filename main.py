@@ -212,7 +212,7 @@ def run(driver, username, password, campus, reason, destination, track,
     print('=================================')
 
     go_to_application_out(driver)
-    fill_out(driver, campus, reason, destination, track)
+    fill_out(driver, campus, reason, track)
     print('=================================')
 
     go_to_application_in(driver)
@@ -253,7 +253,7 @@ if __name__ == '__main__':
     driver = PhantomJS(executable_path=phantomjs_path)
 
     run(driver, args.username, args.password, args.campus, args.reason,
-        args.destination, args.track, args.habitation, args.district,
+         args.track, args.habitation, args.district,
         args.street)
 
     driver.close()
