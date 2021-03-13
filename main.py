@@ -1,3 +1,35 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@Danielzhangzhexi 
+Danielzhangzhexi
+/
+PKUAutoSubmit
+forked from Bruuuuuuce/PKUAutoSubmit
+0
+0242
+Code
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+PKUAutoSubmit/main.py /
+@YOUSIKI
+YOUSIKI Update main.py
+Latest commit 7fd2e31 on 19 Oct 2020
+ History
+ 3 contributors
+@YOUSIKI@Bruuuuuuce@xn6o6x
+261 lines (199 sloc)  8.67 KB
+  
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.ui import Select
@@ -99,10 +131,10 @@ def select_campus(driver, campus):
     driver.find_element_by_xpath(f'//li/span[text()="{campus}"]').click()
 
 
-#def select_destination(driver, destination):
-#    driver.find_elements_by_class_name('el-select')[2].click()
-#    time.sleep(TIMESLP)
-#    driver.find_element_by_xpath(f'//li/span[text()="{destination}"]').click()
+def select_destination(driver, destination):
+    driver.find_elements_by_class_name('el-select')[2].click()
+    time.sleep(TIMESLP)
+    driver.find_element_by_xpath(f'//li/span[text()="{destination}"]').click()
 
 
 def select_district(driver, district):
@@ -150,7 +182,7 @@ def submit(driver):
     time.sleep(TIMESLP)
 
 
-def fill_out(driver, campus, reason, track):
+def fill_out(driver, campus, reason, destination, track):
     print('开始填报出校备案')
 
     print('选择出校/入校    ', end='')
@@ -165,7 +197,9 @@ def fill_out(driver, campus, reason, track):
     write_reason(driver, reason)
     print('Done')
 
-
+    print('选择出校目的地    ', end='')
+    select_destination(driver, destination)
+    print('Done')
 
     print('填写出校行动轨迹    ', end='')
     write_track(driver, track)
@@ -212,7 +246,7 @@ def run(driver, username, password, campus, reason, destination, track,
     print('=================================')
 
     go_to_application_out(driver)
-    fill_out(driver, campus, reason, track)
+    fill_out(driver, campus, reason, destination, track)
     print('=================================')
 
     go_to_application_in(driver)
@@ -228,7 +262,7 @@ if __name__ == '__main__':
     parser.add_argument('--password', '-p', type=str, help='密码')
     parser.add_argument('--campus', type=str, help='所在校区, 燕园、万柳、畅春园、圆明园、中关新园', default='燕园')
     parser.add_argument('--reason', type=str, help='出校原因, eg. 吃饭', default='吃饭')
-    #parser.add_argument('--destination', type=str, help='出校目的地, eg. 北京', default='北京')
+    parser.add_argument('--destination', type=str, help='出校目的地, eg. 北京', default='北京')
     parser.add_argument('--track', type=str, help='出校轨迹, eg. 畅春园食堂', default='畅春园')
     parser.add_argument('--habitation', type=str, help='入校前居住地, eg. 北京', default='北京')
     parser.add_argument('--district', type=str, help='入校前居住所在区, eg. 海淀区', default='海淀区')
@@ -253,7 +287,8 @@ if __name__ == '__main__':
     driver = PhantomJS(executable_path=phantomjs_path)
 
     run(driver, args.username, args.password, args.campus, args.reason,
-         args.track, args.habitation, args.district,
+        args.destination, args.track, args.habitation, args.district,
         args.street)
 
     driver.close()
+
