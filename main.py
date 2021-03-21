@@ -1,35 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@Danielzhangzhexi 
-Danielzhangzhexi
-/
-PKUAutoSubmit
-forked from Bruuuuuuce/PKUAutoSubmit
-0
-0242
-Code
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-PKUAutoSubmit/main.py /
-@YOUSIKI
-YOUSIKI Update main.py
-Latest commit 7fd2e31 on 19 Oct 2020
- History
- 3 contributors
-@YOUSIKI@Bruuuuuuce@xn6o6x
-261 lines (199 sloc)  8.67 KB
-  
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.ui import Select
@@ -291,4 +259,3 @@ if __name__ == '__main__':
         args.street)
 
     driver.close()
-
